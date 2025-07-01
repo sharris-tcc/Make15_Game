@@ -25,15 +25,23 @@
     var cell8 = document.getElementById('rc21');
     var cell9 = document.getElementById('rc22');
 
-    cell1.innerText = 6;
-    cell2.innerText = 7;
-    cell3.innerText = 2;
-    cell4.innerText = 1;
-    cell5.innerText = 5;
-    cell6.innerText = 9;
-    cell7.innerText = 8;
-    cell8.innerText = 3;
-    cell9.innerText = 4;
+	var scenario1 = [6,7,2,1,5,9,8,3,4];
+	var scenario2 = [8,1,6,3,5,7,4,9,2];
+	var scenario3 = [8,3,4,1,5,9,6,7,2];
+	
+	var option = Math.floor(1 * 1000) % 3;
+	
+	var scenarios = [scenario1,scenario2,scenario3]
+
+    cell1.innerText = scenarios[option][0];
+    cell2.innerText = scenarios[option][1];
+    cell3.innerText = scenarios[option][2];
+    cell4.innerText = scenarios[option][3];
+    cell5.innerText = scenarios[option][4];
+    cell6.innerText = scenarios[option][5];
+    cell7.innerText = scenarios[option][6];
+    cell8.innerText = scenarios[option][7];
+    cell9.innerText = scenarios[option][8];
 
     for (let i = 0; i < swaps; i++) {
           /** We need random numbers instead of 1 **/
