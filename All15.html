@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="test_styles.css">
+<script type="text/javascript" src="test_Script.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>ALL 15</title>
+</head>
+<body>
+
+<div class="title">
+	<h1>ALL 15</h1>
+</div>
+<div style="place-items: center; display: inline-block; position: absolute;">
+<table style="place-items: center;">
+    <tr><td style="padding: 10px;"></td></tr>
+    <tr><td><br><br><button id="easyBtn" class="btn" >Easy</button></td></tr>
+    <tr><td><br><br><button id="medBtn" class="btn" >Medium</button></td></tr>
+    <tr><td><br><br><button id="hardBtn" class="btn" >Expert</button></td></tr>
+    <tr><td><br><br><p class="name" >Attempts:</p></td></tr>
+    <tr><td><br><br><p id="attempts" class="name" >0</p></td></tr>
+    <tr><td><br><br><p id="result" class="name" >INCOMPLETE</p></td></tr>
+
+</table>
+
+</div>
+<div style="display: inline-block; width: 100vw;">
+<div style="display: grid; place-items: center; height: 75vh; ">
+<table class="steelBlueCols" id="board" >
+  <tr>
+    <td id="rc00">6</td>
+    <td id="rc01">7</td>
+    <td id="rc02">2</td>
+  </tr>
+ <tr>
+    <td id="rc10">1</td>
+    <td id="rc11">5</td>
+    <td id="rc12">9</td>
+  </tr>
+      <tr>
+    <td id="rc20">8</td>
+    <td id="rc21">3</td>
+    <td id="rc22">4</td>
+  </tr>
+</table>
+</div></div>
+<script>
+    const table = document.getElementById("board");
+    easy = document.getElementById("easyBtn");
+    med = document.getElementById("medBtn");
+    hard = document.getElementById("hardBtn");
+
+    easy.onclick = function() {resetBoard(table,document,10);
+    shuffleBoard(table,document,10);};
+    med.onclick = function() {resetBoard(table,document,5);
+    shuffleBoard(table,document,5);};
+    hard.onclick = function() {resetBoard(table,document,3);
+    shuffleBoard(table,document,3);};
+
+if (table) {
+    resetBoard(table,document,0);
+    shuffleBoard(table,document,10);
+    for (let i = 0; i < table.rows.length; i++) {
+        for (let j = 0; j < table.rows[i].cells.length; j++) {
+            table.rows[i].cells[j].onclick = function() {
+                var attempts = document.getElementById('attempts');
+                if (parseInt(attempts.innerText) > 0) {
+                    var cell = document.getElementById('rc' + i + j);
+                    cell.style.backgroundColor = "gold";
+                    var r1, c1, r2, c2, count = 0;
+                    for (let r = 0; r < table.rows.length; r++) {
+                        for (let c = 0; c < table.rows[i].cells.length; c++) {
+                            var selectedCell = document.getElementById('rc' + r + c);
+                            if (selectedCell.style.backgroundColor == "gold") {
+                                count++;
+                                if (count == 1) {
+                                    r1 = r;
+                                    c1 = c;
+                                }
+                                if (count == 2) {
+                                    r2 = r;
+                                    c2 = c;
+
+                                    var num1 = document.getElementById('rc' + r1 + c1);
+                                    console.log(r1 + ' ' + c1);
+                                    var num2 = document.getElementById('rc' + r2 + c2);
+                                    console.log(r2 + ' ' + c2);
+                                    var temp = num1.innerText;
+
+                                    num1.innerText = num2.innerText;
+                                    num2.innerText = temp;
+
+                                    count = 0;
+                                    num1.style.backgroundColor = "#A4A4A4";
+                                    num2.style.backgroundColor = "#A4A4A4";
+
+                                    resetBoard(table, document, parseInt(attempts.innerText) - 1);
+                                    var result = document.getElementById('result');
+
+                                    var r1 = checkBoard(document, 0, 0, 1, 1, 2, 2)
+                                    var r2 = checkBoard(document, 0, 2, 1, 1, 2, 0)
+
+                                    var r3 = checkBoard(document, 0, 0, 1, 0, 2, 0)
+                                    var r4 = checkBoard(document, 0, 1, 1, 1, 2, 1)
+                                    var r5 = checkBoard(document, 0, 2, 1, 2, 2, 2)
+
+                                    var r6 = checkBoard(document, 0, 0, 0, 1, 0, 2)
+                                    var r7 = checkBoard(document, 1, 0, 1, 1, 1, 2)
+                                    var r8 = checkBoard(document, 2, 0, 2, 1, 2, 2)
+
+                                    if(r1 && r2 && r3 && r4 && r5 && r6 && r7 && r8){
+                                        result.innerText = "COMPLETE!"
+                                        result.style.color = "green";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+        }
+    }
+}
+</script>
+
+</body>
+</html>
