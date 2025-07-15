@@ -112,7 +112,7 @@ h1 {
     position: absolute;
     font-size: 24px;
     font-weight: bold;
-    color: purple;
+    color: purple; /* Change the color if you want */
     padding-left: 2em;
 	text-align: center;
 }
