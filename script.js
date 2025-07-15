@@ -1,17 +1,25 @@
  function resetBoard(table,document,swaps) {
-    var attempts = document.getElementById('attempts');
-    var result = document.getElementById('result');
-    // Set values for Result and Attempts
-    /**result.innerText = ""
+	var color = "#A4A4A4"
+	var attempts = document.getElementById('attempts');
+	var result = document.getElementById('result');
+    
+	/**Set values for Result and Attempts**/
+	
+    result.innerText = ""
     result.style.color = "";
-    attempts.innerText = ;**/
-    var color = "#A4A4A4"
+    attempts.innerText = -1;
+    
     for (let r = 0; r < table.rows.length; r++) {
       for (let c = 0; c < table.rows[r].cells.length; c++) {
           var cell = document.getElementById('rc'+r+c);
-          cell.style.backgroundColor = "#A4A4A4";
+          cell.style.backgroundColor = color;
       }
    }
+}
+
+function getRandomNumber(){
+	/** We need random numbers instead of 1 **/
+	return Math.floor(1 * 1000) % 3;
 }
 
  function shuffleBoard(table,document,swaps) {
@@ -29,7 +37,7 @@
 	var scenario2 = [8,1,6,3,5,7,4,9,2];
 	var scenario3 = [8,3,4,1,5,9,6,7,2];
 	
-	var option = Math.floor(1 * 1000) % 3;
+	var option = getRandomNumber();
 	
 	var scenarios = [scenario1,scenario2,scenario3]
 
@@ -44,11 +52,11 @@
     cell9.innerText = scenarios[option][8];
 
     for (let i = 0; i < swaps; i++) {
-          /** We need random numbers instead of 1 **/
-          var r1 = Math.floor(1 * 1000) % 3;
-          var c1 = Math.floor(1 * 1000) % 3;
-          var r2 = Math.floor(1 * 1000) % 3;
-          var c2 = Math.floor(1 * 1000) % 3;
+          
+          var r1 = getRandomNumber();
+          var c1 = getRandomNumber();
+          var r2 = getRandomNumber();
+          var c2 = getRandomNumber();
 
           var cell1 = document.getElementById('rc'+r1+c1);
           var cell2 = document.getElementById('rc'+r2+c2);
@@ -67,7 +75,8 @@
     var value1 = parseInt(cell1.innerText);
     var value2 = parseInt(cell2.innerText);
     var value3 = parseInt(cell3.innerText);
-    /** Pick a new color if you want **/
+    
+	/** Pick a new color if you want **/
     var color = "green"
 
     /** Determine condition to change cell colors **/
