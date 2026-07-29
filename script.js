@@ -5,8 +5,8 @@
     
 	/**Set values for Result and Attempts**/
 	
-    result.innerText = ""
-    result.style.color = "";
+    result.innerText = "" // Type Incomplete
+    result.style.color = ""; // Lets use red
     attempts.innerText = -1 // change -1 to swaps;
     
     for (let r = 0; r < table.rows.length; r++) {
@@ -18,7 +18,7 @@
 }
 
 function getRandomNumber(){
-	/** We need random numbers (Math.random) instead of 1 **/
+	/** We need random numbers from Math.random() instead of 1 **/
 	return Math.floor(1 * 1000) % 3;
 }
 
