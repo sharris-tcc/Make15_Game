@@ -7,7 +7,7 @@
 	
     result.innerText = ""
     result.style.color = "";
-    attempts.innerText = -1;
+    attempts.innerText = -1 // change -1 to swaps;
     
     for (let r = 0; r < table.rows.length; r++) {
       for (let c = 0; c < table.rows[r].cells.length; c++) {
@@ -18,7 +18,7 @@
 }
 
 function getRandomNumber(){
-	/** We need random numbers instead of 1 **/
+	/** We need random numbers (Math.random) instead of 1 **/
 	return Math.floor(1 * 1000) % 3;
 }
 
@@ -75,11 +75,21 @@ function getRandomNumber(){
     var value1 = parseInt(cell1.innerText);
     var value2 = parseInt(cell2.innerText);
     var value3 = parseInt(cell3.innerText);
-    
-	/** Pick a new color if you want **/
+ 
+ /**
+	 HTML Color Codes - Pick a new color if you want
+
+Black - #000000 White - #FFFFFF Red - #FF0000 Lime - #00FF00 Blue -
+#0000FF Yellow - #FFFF00 Cyan (Aqua) - #00FFFF Magenta (Fuchsia) -
+#FF00FF Silver - #C0C0C0 Gray - #808080 Maroon - #800000 Olive - #808000
+Green - #008000 Purple - #800080 Teal - #008080 Navy - #000080 Orange -
+#FFA500 Pink - #FFC0CB Brown - #A52A2A Gold - #FFD700 Coral - #FF7F50
+Salmon - #FA8072 Sky Blue - #87CEEB Turquoise - #40E0D0 Violet - #EE82EE
+	 																	**/
     var color = "green"
 
     /** Determine condition to change cell colors **/
+ 	/** Hint - each set of 3 numbers must equal 15 **/
     if(false){
             cell1.style.backgroundColor = color;
             cell2.style.backgroundColor = color;
